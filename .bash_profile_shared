@@ -1,6 +1,6 @@
 # (This script is only intended to be run in interactive shells.)
 
-echo "Executing: .bashrc"
+echo "Executing: .bash_profile"
 
 # Prompt
 
@@ -85,11 +85,10 @@ alias grep='grep --color=auto'
 
 # This script
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-alias editrc='edit ~/.bashrc'
-alias editrc2='edit "$DOTFILES_DIR/.bashrc_shared"'
-alias editrcs='edit "$DOTFILES_DIR/splunk.rc"'
+alias editrc='edit ~/.bash_profile'
+alias editrc2='edit "$DOTFILES_DIR/.bash_profile_shared"'
 alias gorc2='cd "$DOTFILES_DIR"'
-alias refresh='source ~/.bashrc'
+alias refresh='source ~/.bash_profile'
 alias reload=refresh
 
 # Personal bin directories
@@ -268,3 +267,13 @@ pstyle () { pep8 "$1" | grep -v W293 | grep -v W291 | grep -v E501; }
 
 # Print a terminal bell character
 alias bell='tput bel'
+
+# Sublime
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+
+# Django
+alias pm="python3 manage.py"
+alias pmr="pm runserver"
+alias pms="pm shell"
+alias pmm="pm migrate"
+alias pmmm="pm makemigrations"
