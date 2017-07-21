@@ -14,7 +14,7 @@ function git_dirty {
 function git_branch {
     # Abort with error if not in a git repository
     git rev-parse --inside-work-tree >/dev/null 2>&1 || return
-    
+
     local branch
     if branch="$(git symbolic-ref -q --short HEAD)"; then
         echo "${branch}$(git_dirty)"
@@ -26,11 +26,11 @@ function git_branch {
 
 function prompt1 {
     # [Cathode ~]$
-    
+
     local GREEN='\[\e[0;32m\]'
     local BOLD_BLUE='\[\e[1;34m\]'
     local RESET='\[\e[m\]'
-    
+
     case `id -u` in
         0) local PCHAR="#";;
         *) local PCHAR="\$";;
@@ -40,12 +40,12 @@ function prompt1 {
 function prompt2 {
     # [Cathode ~ <extra>]
     # $
-    
+
     local GREEN='\[\e[0;32m\]'
     local BOLD_BLUE='\[\e[1;34m\]'
     local BOLD_YELLOW='\[\e[1;33m\]'
     local RESET='\[\e[m\]'
-    
+
     local EXTRA=''
     local GIT_BRANCH=$(git_branch)
     if [ ! -z $GIT_BRANCH ]; then
@@ -62,7 +62,7 @@ function prompt2 {
     if [ ! -z "$EXTRA" ]; then
         EXTRA="${BOLD_YELLOW}${EXTRA}"
     fi
-    
+
     case `id -u` in
         0) local PCHAR="#";;
         *) local PCHAR="\$";;
@@ -179,13 +179,13 @@ p4cr () {
 }
 p4-postmove () {
     # p4 postmove $1 $2
-    # 
+    #
     # Converts {$1=delete, $2=add} to {$1=move/delete, $2=move/add}.
-    # 
+    #
     # Useful to add move-related history information to a diff that
     # was applied to a p4 workspace, such as through
     # 'git p4 submit --prepare-p4-only'.
-    # 
+    #
     if [ ! -f "$2" ]; then
         echo "*** Destination file expected to already exist: $2" ;
         return ;
@@ -277,3 +277,6 @@ alias pmr="pm runserver"
 alias pms="pm shell"
 alias pmm="pm migrate"
 alias pmmm="pm makemigrations"
+
+# Virtualenv
+alias activate=". venv/bin/activate"
